@@ -15,6 +15,7 @@ class Details extends React.Component {
         }
     }
 
+    /*
     componentDidMount() {
         let id = this.props.match.params.id; //to route id from Home
         axios.get('http://3.120.96.16:3001/movies/' + id)
@@ -28,31 +29,31 @@ class Details extends React.Component {
         .catch(err => {
             console.log('Errrrh, error by movie details', err);
         });
-    }
+    }*/
     
     render() {
         
         return (
             <div>
                 <Navigation />
-                <h3>Details to the Movie {this.state.title}</h3>
+                <h3>Details to the Movie {this.props.title}</h3>
                 <table className="details-table">
                     <tbody>
                         <tr>
                             <th>Title</th>
-                            <td>{this.state.title}</td>
+                            <td>{this.props.title}</td>
                         </tr>
                         <tr>
                             <th>Director</th>
-                            <td>{this.state.director}</td>
+                            <td>{this.props.director}</td>
                         </tr>
                         <tr>
                             <th>Description</th>
-                            <td>{this.state.description}</td>
+                            <td>{this.props.description}</td>
                         </tr>
                         <tr>
                             <th>Rating</th>
-                            <td>{this.state.rating}</td>
+                            <td>{this.props.rating}</td>
                         </tr>
                     </tbody>
                 </table>

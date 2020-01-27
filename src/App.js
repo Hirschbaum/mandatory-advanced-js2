@@ -4,6 +4,7 @@ import './App.css';
 import HomePage from './Home';
 import AddMovie from './Adding';
 import Details from './Details';
+import EditMovie from './Editing';
 
 class App extends React.Component {
 
@@ -13,8 +14,9 @@ class App extends React.Component {
         
         <Router>
           <Route exact path='/' component={HomePage}></Route>
-          <Route path='/movies/:id' component={Details}></Route>
+          <Route path='/movie-deatils/:id' component={Details}></Route>
           <Route path='/addmovie' component={AddMovie}></Route>
+          <Route path='/edit/:id' component={EditMovie}></Route>
         </Router>
       </div>
     );

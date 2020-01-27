@@ -14,27 +14,28 @@ class AddMovie extends React.Component {
                 director: '',
                 rating: '',
                 redirect: false,
+                id: '',
         }
     }
 
-    onChangeTitle = (e) => {
+    onTitle = (e) => {
         this.setState({title: e.target.value});
     }
 
-    onChangeDescription = (e) => {
+    onDescription = (e) => {
         this.setState({description: e.target.value});
     }
 
-    onChangeDirector = (e) => {
+    onDirector = (e) => {
         this.setState({director: e.target.value});
     }
 
-    onChangeRating = (e) => {
+    onRating = (e) => {
         this.setState({rating: e.target.value});
     }
 
     addMovieHandler = (e) => {
-        //e.preventDefault();
+        e.preventDefault();
         axios.post('http://3.120.96.16:3001/movies', 
         {
         title: this.state.title, 
@@ -42,12 +43,10 @@ class AddMovie extends React.Component {
         director: this.state.director,
         rating: this.state.rating,
         })
-        .then(this.setState({redirect: true}))
-            /*.then( response => {
-                //update list with GET:
-                axios.get('http://3.120.96.16:3001/movies')
-            })*/
-            .catch(err => {
+        .then(response => {
+            this.setState({redirect: true, id: response.data.id})
+        })
+        .catch(err => {
                 console.log('Errrrh, nothing added to the list', err);
             });
     }
@@ -62,10 +61,30 @@ class AddMovie extends React.Component {
                 <Navigation />
                 <h3> Adding Movie to the List</h3>
                 <form onSubmit={this.addMovieHandler}> {/* onSubmit post to the server*/}
-                    <input title='this.state.title' onChange={this.onChangeTitle} type='text' placeholder='Title'/>
-                    <textarea description='this.state.description' onChange={this.onChangeDescription} placeholder='Movie description'></textarea>
-                    <input director= 'this.state.director' onChange={this.onChangeDirector} type='text' placeholder='Director'/>
-                    <input rating='this.state.rating' onChange={this.onChangeRating} type='number' placeholder='Number 0.0 - 5.0' />
+                    <input 
+                    title={this.state.title}
+                    onChange={this.onTitle} 
+                    type='text' placeholder='Title'
+                    minLength='1' maxLength='40'/>
+
+                    <textarea 
+                    description={this.state.description} 
+                    onChange ={this.onDescription} 
+                    placeholder='Movie description'
+                    minLength='1' maxLength='300'></textarea>
+
+                    <input director= {this.state.director} 
+                    onChange={this.onDirector} 
+                    type='text' placeholder='Director'
+                    minLength='1' maxLength='40'/>
+
+                    <input 
+                    rating={this.state.rating} 
+                    onChange={this.onRating} 
+                    type='number' 
+                    placeholder='Number 0.0 - 5.0' 
+                    min='0' max='5' step='0.1'/>
+
                     <input type='submit' value='Add To List'/>
                 </form>
             </div>

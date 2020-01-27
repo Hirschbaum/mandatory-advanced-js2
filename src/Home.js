@@ -33,11 +33,11 @@ class HomePage extends React.Component {
                     <td>{director}</td>
                     <td>{rating}</td>
                     <td><button key={id}>
-                    <Link className='link-button' to={'/movies/' + id}>Details</Link>
+                    <Link className='link-button' to={'/movie-details/' + id}>Details</Link>
                         </button></td>
 
                         <td><button key={id}>
-                    <Link className='link-button' to={'/movies/' + id}>Edit</Link>
+                    <Link className='link-button' to={'/edit/' + id}>Edit</Link>
                         </button></td>
                     <td><button onClick={() => this.onDelete(id)}>Delete</button></td>
                 </tr>

@@ -67,10 +67,30 @@ class EditMovie extends React.Component {
                 <Navigation />
                 <h3>Edit a Movie from the List</h3>
                 <form onSubmit={this.updateMovieHandler}> {/* onSubmit put to the server*/}
-                    <input title='this.state.title' onChange={this.onChangeTitle} type='text' placeholder='this.state.title'/>
-                    <textarea description='this.state.description' onChange={this.onChangeDescription} placeholder='this.state.description'></textarea>
-                    <input director= 'this.state.director' onChange={this.onChangeDirector} type='text' placeholder='this.state.director'/>
-                    <input rating='this.state.rating' onChange={this.onChangeRating} type='number' placeholder='this.state.rating' />
+                    <input 
+                    title={this.props.title}
+                    onChange={this.onChangeTitle} 
+                    type='text'
+                    minLength='1' maxLength='40'/>
+                    
+                    <textarea 
+                    description={this.props.description} 
+                    onChange={this.onChangeDescription} 
+                    minLength='1' maxLength='300'
+                    ></textarea>
+                    
+                    <input 
+                    director= {this.props.director} 
+                    onChange={this.onChangeDirector} 
+                    type='text' 
+                    minLength='1' maxLength='40'/>
+                    
+                    <input 
+                    rating={this.props.rating} 
+                    onChange={this.onChangeRating} 
+                    type='number'
+                    min='0' max='5' step='0.1' />
+                    
                     <input type='submit' value='Save Changes'/>
                 </form>
             </div>
