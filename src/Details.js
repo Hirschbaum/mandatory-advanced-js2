@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Navigation from './Navigation';
+import { Helmet } from 'react-helmet';
 import axios from 'axios';
 
 class Details extends React.Component {
@@ -12,11 +13,23 @@ class Details extends React.Component {
                 description: '',
                 director: '',
                 rating: '',
+                id: '',
         }
     }
-
-    /*
+    
     componentDidMount() {
+        this.getMovieDetails();
+    }
+    
+    /*getMovieDetails = () => {
+        this.setState({ title: this.props.title })
+        this.setState({ director: this.props.director })
+        this.setState({ description: this.props.description })
+        this.setState({ rating: this.props.rating })
+    }*/
+
+    
+    getMovieDetails() {
         let id = this.props.match.params.id; //to route id from Home
         axios.get('http://3.120.96.16:3001/movies/' + id)
         .then(response => {
@@ -27,33 +40,39 @@ class Details extends React.Component {
             this.setState({rating: response.data.rating})
         })
         .catch(err => {
-            console.log('Errrrh, error by movie details', err);
+            console.log('Error by movie details', err);
         });
-    }*/
-    
+    }
+
     render() {
-        
+        console.log(this.props.location.state);
+
         return (
             <div>
                 <Navigation />
-                <h3>Details to the Movie {this.props.title}</h3>
+
+                <Helmet>
+                    <title>{this.state.title}</title>
+                </Helmet>
+
+                <h3>Details to the Movie {this.state.title}</h3>
                 <table className="details-table">
                     <tbody>
                         <tr>
                             <th>Title</th>
-                            <td>{this.props.title}</td>
+                            <td>{this.state.title}</td>
                         </tr>
                         <tr>
                             <th>Director</th>
-                            <td>{this.props.director}</td>
+                            <td>{this.state.director}</td>
                         </tr>
                         <tr>
                             <th>Description</th>
-                            <td>{this.props.description}</td>
+                            <td>{this.state.description}</td>
                         </tr>
                         <tr>
                             <th>Rating</th>
-                            <td>{this.props.rating}</td>
+                            <td>{this.state.rating}</td>
                         </tr>
                     </tbody>
                 </table>

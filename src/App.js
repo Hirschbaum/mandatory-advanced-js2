@@ -1,10 +1,10 @@
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import React from 'react';
 import './App.css';
-import HomePage from './Home';
-import AddMovie from './Adding';
+import Home from './Home';
+import AddMovie from './AddMovie';
 import Details from './Details';
-import EditMovie from './Editing';
+import EditMovie from './EditMovie';
 
 class App extends React.Component {
 
@@ -13,8 +13,8 @@ class App extends React.Component {
       <div className="App">
         
         <Router>
-          <Route exact path='/' component={HomePage}></Route>
-          <Route path='/movie-deatils/:id' component={Details}></Route>
+          <Route exact path='/' component={Home}></Route>
+          <Route path='/movie-details/:id' component={Details}></Route>
           <Route path='/addmovie' component={AddMovie}></Route>
           <Route path='/edit/:id' component={EditMovie}></Route>
         </Router>

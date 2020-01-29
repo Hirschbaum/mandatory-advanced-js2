@@ -23,7 +23,7 @@ h3 {
 
 table {
   border-collapse: collapse;
-  width:  85%;
+  width:  85vw;
   border: 1px solid rgb(223, 223, 223);
   margin-left: 2%;
 }
@@ -42,16 +42,23 @@ tbody tr:nth-child(odd) {
   background-color: rgb(243, 242, 242);
 }
 
-button, .link-button {
+.link-button {
   border: 1px solid rgb(87, 85, 85);
   border-radius: 0.3rem;
-  color: #fff;
-  background-color: rgb(87, 85, 85);
-  padding: 7%;
+  color: rgb(56, 56, 56);
+  background-color: rgb(247, 243, 243);
+  padding: 9%;
   letter-spacing: 0.1em;
   font-weight: 600;
   text-decoration: none;
 }
+
+button {
+  border: none;
+  background-color: none;
+  background-color: transparent;
+}
+
 
 /*---------------ADDING--------------*/
 

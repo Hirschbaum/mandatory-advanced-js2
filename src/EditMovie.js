@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Navigation from './Navigation';
 import axios from 'axios';
+import Helmet from 'react-helmet';
 
 class EditMovie extends React.Component {
     constructor(props) {
@@ -31,7 +32,7 @@ class EditMovie extends React.Component {
         this.setState({rating: e.target.value});
     }
 
-    getMovieDetails = () => {
+    /*getMovieDetails = () => {
         let id = this.props.match.params.id
         axios.get('http://3.120.96.16:3001/movies/' + id)
         .then(response => {
@@ -44,7 +45,7 @@ class EditMovie extends React.Component {
         .catch(err => {
             console.log('Eh, error by getting movie for Editing.js', err);
         });
-    }
+    }*/
 
     updateMovieHandler = (e) => {
         let id = this.props.match.params.id
@@ -64,29 +65,32 @@ class EditMovie extends React.Component {
     render() {
         return(
             <div>
+                <Helmet>
+                    <title>Edit Movie</title>
+                </Helmet>
                 <Navigation />
                 <h3>Edit a Movie from the List</h3>
                 <form onSubmit={this.updateMovieHandler}> {/* onSubmit put to the server*/}
                     <input 
-                    title={this.props.title}
+                    title={this.state.title}
                     onChange={this.onChangeTitle} 
                     type='text'
                     minLength='1' maxLength='40'/>
                     
                     <textarea 
-                    description={this.props.description} 
+                    description={this.state.description} 
                     onChange={this.onChangeDescription} 
                     minLength='1' maxLength='300'
                     ></textarea>
                     
                     <input 
-                    director= {this.props.director} 
+                    director= {this.state.director} 
                     onChange={this.onChangeDirector} 
                     type='text' 
                     minLength='1' maxLength='40'/>
                     
                     <input 
-                    rating={this.props.rating} 
+                    rating={this.state.rating} 
                     onChange={this.onChangeRating} 
                     type='number'
                     min='0' max='5' step='0.1' />
