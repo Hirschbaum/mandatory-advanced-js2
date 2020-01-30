@@ -137,7 +137,9 @@ class Home extends React.Component {
                     type='text'
                     placeholder='Search film...'
                     value={this.state.search}
-                    onChange={this.updateSearch} />
+                    onChange={this.updateSearch}
+                />
+                <p>{errMessage}</p>
                 <table>
                     <thead>
                         <tr>
@@ -153,8 +155,6 @@ class Home extends React.Component {
                         {this.renderTableData()}
                     </tbody>
                 </table>
-                <br/>
-                <p>{errMessage}</p>
             </div>
         )
     }
