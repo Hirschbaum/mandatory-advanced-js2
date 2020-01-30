@@ -3,6 +3,7 @@ import './App.css';
 import Navigation from './Navigation';
 import { Helmet } from 'react-helmet';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class Details extends React.Component {
     constructor(props) {
@@ -21,23 +22,16 @@ class Details extends React.Component {
         this.getMovieDetails();
     }
     
-    /*getMovieDetails = () => {
-        this.setState({ title: this.props.title })
-        this.setState({ director: this.props.director })
-        this.setState({ description: this.props.description })
-        this.setState({ rating: this.props.rating })
-    }*/
-
-    
     getMovieDetails() {
         let id = this.props.match.params.id; //to route id from Home
         axios.get('http://3.120.96.16:3001/movies/' + id)
         .then(response => {
-            console.log('Movie', response);
+            //console.log('Movie', response);
             this.setState({title: response.data.title})
             this.setState({director: response.data.director})
             this.setState({description: response.data.description})
             this.setState({rating: response.data.rating})
+            this.setState({id: response.data.id})
         })
         .catch(err => {
             console.log('Error by movie details', err);
@@ -45,8 +39,7 @@ class Details extends React.Component {
     }
 
     render() {
-        console.log(this.props.location.state);
-
+        
         return (
             <div>
                 <Navigation />
@@ -76,6 +69,9 @@ class Details extends React.Component {
                         </tr>
                     </tbody>
                 </table>
+                <button key={this.state.id} className='edit-button'>
+                        <Link className='link-button link-edit'  to={'/edit/' + this.props.match.params.id}>Edit</Link>
+                </button>
             </div>
         )
     }

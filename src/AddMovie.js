@@ -54,49 +54,39 @@ class AddMovie extends React.Component {
 
     render() {
         if (this.state.redirect) {
-            return <Redirect to={`/movie-details/${this.props.match.params.id}`} />
+            return <Redirect to='/' />
         }
 
         return (
             <div>
-               {/* { this.state.redirect && <Redirect to={`/movie-details/${this.props.match.params.id}`}/>
-                       {{
-                            pathname: ,
-                            state: this.state,
-                            title: this.state.title,
-                            director: this.state.director,
-                            description: this.state.description,
-                            rating: this.state.rating,
-                            id: this.state.id,
-                            
-                        }}/>
-            }*/}
-
                 <Helmet>
                     <title>Add Movie</title>
                 </Helmet>
+
                 <Navigation />
+                
                 <h3> Adding Movie to the List</h3>
                 <form onSubmit={this.onSubmit}> 
                     <input 
-                    title={this.state.title}
+                    value={this.state.title}
                     onChange={this.onTitle} 
                     type='text' placeholder='Title'
                     minLength='1' maxLength='40'/>
 
                     <textarea 
-                    description={this.state.description} 
+                    value={this.state.description} 
                     onChange ={this.onDescription} 
                     placeholder='Movie description'
                     minLength='1' maxLength='300'></textarea>
 
-                    <input director= {this.state.director} 
+                    <input 
+                    value= {this.state.director} 
                     onChange={this.onDirector} 
                     type='text' placeholder='Director'
                     minLength='1' maxLength='40'/>
 
                     <input 
-                    rating={this.state.rating} 
+                    value={this.state.rating} 
                     onChange={this.onRating} 
                     type='number' 
                     placeholder='Number 0.0 - 5.0' 

@@ -6,7 +6,7 @@
   font-family: 'Quicksand', sans-serif;
 }
 
-h3 {
+h3, p {
   margin-left: 2%;
 }
 
@@ -20,15 +20,14 @@ h3 {
   letter-spacing: 0.1rem;
 }
 
-
+/*-------------HOME-------------------*/
 table {
   border-collapse: collapse;
-  width:  85vw;
+  width:  90vw;
   border: 1px solid rgb(223, 223, 223);
-  margin-left: 2%;
+  margin: 0 auto;
 }
 
-/*-------------HOME-------------------*/
 table td, th {
   padding: 0.5%;
   border: 1px solid rgb(223, 223, 223);
@@ -42,23 +41,37 @@ tbody tr:nth-child(odd) {
   background-color: rgb(243, 242, 242);
 }
 
+button {
+  border: none;
+  background-color: none;
+  background-color: transparent;
+  padding: 10%;  
+}
+
 .link-button {
-  border: 1px solid rgb(87, 85, 85);
+  border: 1px solid rgb(223,223,223);
   border-radius: 0.3rem;
   color: rgb(56, 56, 56);
   background-color: rgb(247, 243, 243);
-  padding: 9%;
+  padding: 13%;
   letter-spacing: 0.1em;
   font-weight: 600;
   text-decoration: none;
 }
 
-button {
-  border: none;
-  background-color: none;
-  background-color: transparent;
+.delete-button {
+  border: 1px solid rgb(223,223,223);
+  border-radius: 0.3rem;
+  color: rgb(56, 56, 56);
+  background-color: rgb(247, 243, 243);
+  letter-spacing: 0.1em;
+  font-weight: 600;
 }
 
+.link-button:hover, .delete-button:hover {
+  background-color: rgb(56, 56, 56);
+  color: #fff;
+}
 
 /*---------------ADDING--------------*/
 
@@ -86,4 +99,20 @@ input[type=submit] {
   letter-spacing: 0.15em;
   font-weight: 800;
   margin-top: 1%;
+}
+
+/*-------------DETAILS-----------*/
+
+.edit-button, .link-edit {
+  margin-top: 5%;
+}
+
+.link-edit {
+  padding: 25%;
+}
+
+.link-edit:hover {
+  color: #fff;
+  background-color: rgb(87, 85, 85);
+  border: 1px solid rgb(87, 85, 85);
 }
